@@ -1,0 +1,24 @@
+{
+  "name": "digital-address-book",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elena-dev-thought/digital-address-book.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elena-dev-thought/digital-address-book/issues"
+  },
+  "homepage": "https://github.com/elena-dev-thought/digital-address-book#readme",
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "serve": "^10.0.2"
+  }
+}

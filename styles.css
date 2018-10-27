@@ -1,0 +1,53 @@
+body {
+  background-color: rgb(171, 142, 170);
+}
+
+.container {
+  display: grid;
+  grid-template-areas:
+    'toolbar contact-details'
+    'toolbar contact-details'
+    'contact-list contact-details'
+    'contact-list contact-details'
+    'contact-list contact-details'
+    'contact-list contact-details'
+    'contact-list contact-details'
+    'contact-list contact-details'
+    'contact-list contact-details'
+    'contact-list contact-details'
+    'contact-list contact-details'
+    'contact-list contact-details';
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(12, 1fr);
+  grid-column-gap: 80px;
+  padding: 20px;
+  height: 728px;
+}
+
+.agenda {
+  background-color: grey;
+}
+.toolbar {
+  grid-area: toolbar;
+}
+
+.button {
+  background-color: green;
+}
+.add {
+}
+
+.search {
+}
+
+.contact-details {
+  grid-area: contact-details;
+  background-color: grey;
+  align-self: stretch;
+}
+
+div ul {
+  grid-area: contact-list;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  list-style-type: none;
+}

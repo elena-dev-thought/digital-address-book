@@ -1,7 +1,21 @@
 let contactList = createMockData(30);
 
 $(document).ready(() => {
-  $('.btn.add').on('click', () => {});
+  $('.contact-details .input-content').addClass('hide');
+  $('button.btn.save').addClass('hide');
+
+  $('.btn.add').on('click', () => {
+    $('.contact-details .input-content').removeClass('hide');
+    $('button.btn.save').removeClass('hide');
+  });
+  $('input').attr('required', true);
+  $('#addContactForm').submit(function(event) {
+    alert('Handler for .submit() called.');
+    $('.input-content input').val('');
+
+    // event.preventDefault();
+  });
+
   insertContactItems(contactList);
 });
 

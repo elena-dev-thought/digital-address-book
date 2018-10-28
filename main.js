@@ -13,7 +13,9 @@ function createMockData(counter) {
       name: faker.name.firstName(),
       surname: faker.name.lastName(),
       phoneNumber: faker.phone.phoneNumber(),
-      address: faker.fake('{{address.streetAddress}}, {{address.zipCode}}, {{address.city}}')
+      street: faker.address.streetAddress(),
+      city: faker.fake('{{address.streetAddress}}, {{address.zipCode}}, {{address.city}}'),
+      email: faker.internet.email()
     };
     contactListMock.push(contactItem);
   }
@@ -22,6 +24,6 @@ function createMockData(counter) {
 
 function insertContactItems(contactList) {
   contactList.forEach(listItem => {
-    $('.contact-list').append(` <div class="contact-list-item"> ${listItem.name}  ${listItem.surname} </div>`);
+    $('.contact-list').append(` <div class="margin20"> ${listItem.name}  ${listItem.surname}<hr> </div>`);
   });
 }

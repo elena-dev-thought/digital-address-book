@@ -71,15 +71,15 @@ input[type='text']:focus {
   background-color: #f2f2f2;
   border-radius: 5px;
   border: 2px solid;
-  display: grid;
+  /* display: grid;
   grid-template-columns: 1fr 2fr;
-  grid-template-rows: repeat(5, 50px);
+  grid-template-rows: repeat(6, 50px);
   grid-template-areas:
     'input-name input-content'
     'input-name input-content'
     'input-name input-content'
     'input-name input-content'
-    'input-name input-content';
+    'input-name input-content'; */
 }
 
 .hide {

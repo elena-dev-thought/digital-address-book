@@ -13,11 +13,8 @@ let contactList = createMockData(33).sort(function(a, b) {
 $(document).ready(() => {
   hideEditableMode();
   $('.btn.add').on('click', () => {
-    $('.contact-details .input-content').removeClass('hide');
-    $('button.btn.save').removeClass('hide');
+    showAddContact();
   });
-
-  $('input').attr('required', true);
 
   $('#addContactForm').submit(function(event) {
     insertNewContactItem($(this).serializeArray());
@@ -29,11 +26,15 @@ $(document).ready(() => {
   });
 
   $('.contact-list').on('click', '.contact-item', function() {
-    console.log(findElement(contactList, $(this).data().contactId).name);
     showContactDetail(findElement(contactList, $(this).data().contactId));
   });
 
+  $('input.search').on('keyup', function() {
+    insertContactItems(filterElement(contactList, $('input.search').val()));
+  });
+
   insertContactItems(contactList);
+  $('input.search').val('');
 });
 
 function createMockData(counter) {
@@ -100,11 +101,68 @@ function showContactDetail(contact) {
 <hr>
 </div>
 </div>`;
+
+  $('.content.contact-details').html(template);
+}
+
+function showAddContact() {
+  const template = `  <form id="addContactForm" class="contact-item margin20">
+  <div class="input-name"> <span class="margin20">Name: </span>
+      <hr>
+  </div>
+  <div class="input-content"> <input required name="name" />
+      <hr>
+  </div>
+  <div class="input-name"> <span class="margin20">Surname: </span>
+      <hr>
+  </div>
+  <div class="input-content"> <input required name="surname" />
+      <hr>
+  </div>
+  <div class="input-name"> <span class="margin20">Phone number:</span>
+      <hr>
+  </div>
+  <div class="input-content"> <input required name="phoneNumber" />
+      <hr>
+  </div>
+  <div class="input-name"><span class="margin20"> Address street: </span>
+      <hr>
+  </div>
+  <div class="input-content"> <input required name="street" />
+      <hr>
+  </div>
+  <div class="input-name"><span class="margin20"> City & zipcode: </span>
+      <hr>
+  </div>
+  <div class="input-content"> <input required name="city" />
+      <hr>
+  </div>
+  <div class="input-name"><span class="margin20"> Email: </span>
+      <hr>
+  </div>
+  <div class="input-content"> <input required name="email">
+      <hr>
+  </div>
+  <button class="btn save" type="submit">save</button>
+</div>
+</form>`;
+
   $('.content.contact-details').html(template);
 }
 
 function findElement(contactList, contactId) {
   return contactList.find(contact => {
     return contact.id == contactId;
+  });
+}
+
+function filterElement(contactList, searchStr) {
+  uppercasedSearch = searchStr.toUpperCase();
+  return contactList.filter(element => {
+    return (
+      element.name.toUpperCase().includes(uppercasedSearch) |
+      element.surname.toUpperCase().includes(uppercasedSearch) |
+      element.email.toUpperCase().includes(uppercasedSearch)
+    );
   });
 }

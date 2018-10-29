@@ -11,7 +11,8 @@ let contactList = createMockData(33).sort(function(a, b) {
 });
 
 $(document).ready(() => {
-  hideEditableMode();
+  initialize();
+  
   $('.btn.add').on('click', () => {
     showAddContact();
   });
@@ -26,16 +27,23 @@ $(document).ready(() => {
   });
 
   $('.contact-list').on('click', '.contact-item', function() {
-    showContactDetail(findElement(contactList, $(this).data().contactId));
+    $('.contact-item').removeClass('selected');
+    let id = $(this).data().contactId;
+    $(this).addClass('selected');
+    showContactDetail(findElement(contactList, id));
   });
 
   $('input.search').on('keyup', function() {
     insertContactItems(filterElement(contactList, $('input.search').val()));
   });
-
-  insertContactItems(contactList);
-  $('input.search').val('');
 });
+
+function initialize() {
+  insertContactItems(contactList);
+  showContactDetail(contactList[1]);
+  $('.contact-item:first').addClass('selected');
+  $('input.search').val('');
+}
 
 function createMockData(counter) {
   let contactListMock = [];
@@ -58,9 +66,9 @@ function createMockData(counter) {
 function insertContactItems(contactList) {
   let myNewItem = '';
   contactList.forEach(listItem => {
-    myNewItem += ` <div class="contact-item margin20" data-contact-id="${listItem.id}"> ${listItem.name}  ${
+    myNewItem += `<div class="contact-item margin20" data-contact-id="${listItem.id}"> ${listItem.name}  ${
       listItem.surname
-    }<hr> </div>`;
+    } </div>`;
   });
   $('.contact-list').html(myNewItem);
 }
@@ -72,11 +80,6 @@ function insertNewContactItem(newContact) {
   });
   myNewContact.id = contactList.length;
   contactList.push(myNewContact);
-}
-
-function hideEditableMode() {
-  $('.contact-details .input-content').addClass('hide');
-  $('button.btn.save').addClass('hide');
 }
 
 function showContactDetail(contact) {

@@ -2,6 +2,12 @@ body {
   background-color: mediumslateblue;
 }
 
+html,
+body {
+  font-family: 'Source Sans Pro', Roboto;
+  font-size: 14px;
+}
+
 .container {
   display: grid;
   grid-template-areas:

@@ -144,7 +144,6 @@ function showAddContact() {
       <hr>
   </div>
   <button class="btn save toolbar-element" type="submit">save</button>
-</div>
 </form>`;
 
   $('.content.contact-details').html(template);

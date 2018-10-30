@@ -98,8 +98,8 @@ function showContactDetail(contact) {
 </div>
 <div class="input-name"><span class="margin20"> Email: </span> <span>${contact.email}</span>
 <hr>
-<button class="btn delete toolbar-element">delete</button>
 </div>
+<button class="btn delete toolbar-element">delete</button>
 </div>`;
 
   $('.content.contact-details').html(template);

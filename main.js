@@ -1,28 +1,16 @@
-let contactList = createMockData(33).sort(function(a, b) {
-  let nameA = a.name.toUpperCase();
-  let nameB = b.name.toUpperCase();
-  if (nameA < nameB) {
-    return -1;
-  }
-  if (nameA > nameB) {
-    return 1;
-  }
-  return 0;
-});
+let contactList = sortArrayAscending(createMockData(33));
 
 $(document).ready(() => {
   initialize();
-  
+
   $('.btn.add').on('click', () => {
     showAddContact();
   });
-
-  $('#addContactForm').submit(function(event) {
+  $('.contact-details').on('submit', '#addContactForm', function(event) {
     insertNewContactItem($(this).serializeArray());
+    contactList = sortArrayAscending(contactList);
     insertContactItems(contactList);
-    alert('Handler for .submit() called.');
     $('.input-content input').val('');
-    hideEditableMode();
     event.preventDefault();
   });
 
@@ -35,6 +23,13 @@ $(document).ready(() => {
 
   $('input.search').on('keyup', function() {
     insertContactItems(filterElement(contactList, $('input.search').val()));
+  });
+
+  $('.contact-details').on('click', ' .btn.delete', function() {
+    let selectedId = $('.selected').data().contactId;
+    contactList = deleteContact(contactList, selectedId);
+    insertContactItems(contactList);
+    $('.contact-item:first').click();
   });
 });
 
@@ -80,6 +75,7 @@ function insertNewContactItem(newContact) {
   });
   myNewContact.id = contactList.length;
   contactList.push(myNewContact);
+  console.log(contactList);
 }
 
 function showContactDetail(contact) {
@@ -102,6 +98,7 @@ function showContactDetail(contact) {
 </div>
 <div class="input-name"><span class="margin20"> Email: </span> <span>${contact.email}</span>
 <hr>
+<button class="btn delete toolbar-element">delete</button>
 </div>
 </div>`;
 
@@ -109,7 +106,7 @@ function showContactDetail(contact) {
 }
 
 function showAddContact() {
-  const template = `  <form id="addContactForm" class="contact-item margin20">
+  const template = `  <form id="addContactForm" class="contact-item margin20" action="#">
   <div class="input-name"> <span class="margin20">Name: </span>
       <hr>
   </div>
@@ -146,7 +143,7 @@ function showAddContact() {
   <div class="input-content"> <input required name="email">
       <hr>
   </div>
-  <button class="btn save" type="submit">save</button>
+  <button class="btn save toolbar-element" type="submit">save</button>
 </div>
 </form>`;
 
@@ -167,5 +164,23 @@ function filterElement(contactList, searchStr) {
       element.surname.toUpperCase().includes(uppercasedSearch) |
       element.email.toUpperCase().includes(uppercasedSearch)
     );
+  });
+}
+
+function deleteContact(contactList, selectedId) {
+  return contactList.filter(element => element.id !== selectedId);
+}
+
+function sortArrayAscending(arr) {
+  return arr.sort(function(a, b) {
+    let nameA = a.name.toUpperCase();
+    let nameB = b.name.toUpperCase();
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
+    return 0;
   });
 }

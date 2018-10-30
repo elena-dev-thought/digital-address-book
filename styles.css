@@ -130,3 +130,7 @@ contact-details div div {
 .contact-item {
   border-bottom: solid darkgray 1px;
 }
+
+.delete {
+  background-color: red;
+}

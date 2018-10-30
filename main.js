@@ -170,9 +170,10 @@ function filterElement(contactList, searchStr) {
   uppercasedSearch = searchStr.toUpperCase();
   return contactList.filter(element => {
     return (
-      element.name.toUpperCase().includes(uppercasedSearch) |
-      element.surname.toUpperCase().includes(uppercasedSearch) |
-      element.email.toUpperCase().includes(uppercasedSearch)
+      element.name
+        .toUpperCase()
+        .concat(' ', element.surname.toUpperCase())
+        .includes(uppercasedSearch) | element.email.toUpperCase().includes(uppercasedSearch)
     );
   });
 }

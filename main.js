@@ -144,7 +144,6 @@ function showAddContact() {
       <hr>
   </div>
   <button class="btn save toolbar-element" type="submit">save</button>
-</div>
 </form>`;
 
   $('.content.contact-details').html(template);
@@ -160,9 +159,10 @@ function filterElement(contactList, searchStr) {
   uppercasedSearch = searchStr.toUpperCase();
   return contactList.filter(element => {
     return (
-      element.name.toUpperCase().includes(uppercasedSearch) |
-      element.surname.toUpperCase().includes(uppercasedSearch) |
-      element.email.toUpperCase().includes(uppercasedSearch)
+      element.name
+        .toUpperCase()
+        .concat(' ', element.surname.toUpperCase())
+        .includes(uppercasedSearch) | element.email.toUpperCase().includes(uppercasedSearch)
     );
   });
 }

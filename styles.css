@@ -81,8 +81,19 @@ input[type='text']:focus {
   display: grid;
 }
 
-.content.contact-details > div {
+.content.contact-details > div > div {
   border-bottom: solid darkgray 1px;
+  margin-top: 10px;
+}
+
+.contact-item-form > div {
+  border-bottom: solid darkgray 1px;
+  margin-top: 10px;
+}
+
+.contact-item-form input {
+  min-width: 300px;
+  min-height: 20px;
 }
 
 .content-item {
@@ -128,7 +139,7 @@ contact-details div div {
 form {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  grid-template-rows: 60px;
+  grid-template-rows: 40px;
   grid-auto-flow: row;
-  grid-auto-rows: 60px;
+  grid-auto-rows: 40px;
 }

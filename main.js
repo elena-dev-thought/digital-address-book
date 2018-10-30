@@ -117,42 +117,30 @@ function showContactDetail(contact) {
 }
 
 function showAddContact() {
-  const template = ` <form id="addContactForm" class="contact-item margin20" action="#">
+  const template = ` <form id="addContactForm" class="contact-item-form margin20">
   <div > <span>Name: </span>
-      <hr>
   </div>
   <div class="input-content"> <input required name="name" />
-      <hr>
   </div>
-  <div class="input-name"> <span class="margin20">Surname: </span>
-      <hr>
+  <div class="input-name"> <span>Surname: </span>
   </div>
   <div class="input-content"> <input required name="surname" />
-      <hr>
   </div>
-  <div class="input-name"> <span class="margin20">Phone number:</span>
-      <hr>
+  <div class="input-name"> <span>Phone number:</span>
   </div>
   <div class="input-content"> <input required name="phoneNumber" />
-      <hr>
   </div>
-  <div class="input-name"><span class="margin20"> Address street: </span>
-      <hr>
+  <div class="input-name"><span> Address street: </span>
   </div>
   <div class="input-content"> <input required name="street" />
-      <hr>
   </div>
-  <div class="input-name"><span class="margin20"> City & zipcode: </span>
-      <hr>
+  <div class="input-name"><span> City & zipcode: </span>
   </div>
   <div class="input-content"> <input required name="city" />
-      <hr>
   </div>
-  <div class="input-name"><span class="margin20"> Email: </span>
-      <hr>
+  <div class="input-name"><span> Email: </span>
   </div>
   <div class="input-content"> <input required name="email">
-      <hr>
   </div>
   <button class="btn save toolbar-element" type="submit">save</button>
 </form>`;

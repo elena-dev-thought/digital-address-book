@@ -80,34 +80,45 @@ function insertNewContactItem(newContact) {
 
 function showContactDetail(contact) {
   const template = `
-  <div class="margin20">
-  <div class="input-name" data > <span class="margin20">Name: </span> <span>${contact.name}</span>
-  <hr>
+  <div class="margin20 content-item">
+  <div> <span>Name: </span>
   </div>
-<div class="input-name"> <span class="margin20">Surname: </span> <span>${contact.surname}</span>
-  <hr>
-</div>
-<div class="input-name"> <span class="margin20">Phone number:</span> <span>${contact.phoneNumber}</span>
-  <hr>
-</div>
-<div class="input-name"><span class="margin20"> Address street: </span> <span>${contact.street}</span>
-  <hr>
-</div>
-<div class="input-name"><span class="margin20"> City & zipcode: </span> <span>${contact.city}</span>
-  <hr>
-</div>
-<div class="input-name"><span class="margin20"> Email: </span> <span>${contact.email}</span>
-<hr>
-</div>
-<button class="btn delete toolbar-element">delete</button>
+  <div>
+      <span >${contact.name}</span>
+  </div>
+  <div > <span>Surname: </span>
+  </div>
+  <div>
+      <span >${contact.surname}</span>
+  </div>
+  <div > <span>Phone number:</span>
+  </div>
+  <div>
+      <span >${contact.phoneNumber}</span>
+  </div>
+  <div ><span> Address street: </span>
+  </div>
+  <div>
+      <span >${contact.street}</span>
+  </div>
+  <div ><span> City & zipcode: </span>
+  </div>
+  <div>
+      <span >${contact.city}</span>
+  </div>
+  <div ><span> Email: </span>
+  </div>
+  <div>
+      <span   >${contact.email}</span>
+  </div>
+  <button class="btn delete toolbar-element">delete</button>
 </div>`;
-
   $('.content.contact-details').html(template);
 }
 
 function showAddContact() {
-  const template = `  <form id="addContactForm" class="contact-item margin20" action="#">
-  <div class="input-name"> <span class="margin20">Name: </span>
+  const template = ` <form id="addContactForm" class="contact-item margin20" action="#">
+  <div > <span>Name: </span>
       <hr>
   </div>
   <div class="input-content"> <input required name="name" />

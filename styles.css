@@ -79,17 +79,20 @@ input[type='text']:focus {
   background-color: #f2f2f2;
   border-radius: 5px;
   border: 2px solid;
-  /* display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-template-rows: repeat(6, 50px);
-  grid-template-areas:
-    'input-name input-content'
-    'input-name input-content'
-    'input-name input-content'
-    'input-name input-content'
-    'input-name input-content'; */
+  display: grid;
 }
 
+.content.contact-details > div {
+  border-bottom: solid darkgray 1px;
+}
+
+.content-item {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 40px;
+  grid-auto-flow: row;
+  grid-auto-rows: 40px;
+}
 .hide {
   display: none;
 }
@@ -109,14 +112,6 @@ contact-details div div {
   height: 40px;
 }
 
-.input-name {
-  grid-area: input-name;
-}
-
-.input-content {
-  grid-area: input-content;
-}
-
 .save {
   background-color: green;
 }
@@ -127,18 +122,14 @@ contact-details div div {
   border-radius: 5px;
 }
 
-.contact-item {
-  border-bottom: solid darkgray 1px;
-}
-
 .delete {
   background-color: red;
 }
 
 form {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 40px;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 60px;
   grid-auto-flow: row;
-  grid-auto-rows: 40px;
+  grid-auto-rows: 60px;
 }

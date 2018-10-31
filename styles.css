@@ -52,10 +52,13 @@ body {
   width: 136px;
   max-height: 80px;
 }
+
 .toolbar-element.search {
   width: 100px;
 }
-.add {
+
+.add,
+.save {
   background-color: darkseagreen;
 }
 
@@ -63,6 +66,7 @@ input[type='text']:focus {
   border-color: dodgerBlue;
   box-shadow: 0 0 8px 0 dodgerBlue;
 }
+
 .contact-list {
   grid-area: contact-list;
   /* display: grid;
@@ -93,7 +97,7 @@ input[type='text']:focus {
 
 .contact-item-form input {
   min-width: 300px;
-  min-height: 20px;
+  height: 20px;
 }
 
 .content-item {
@@ -103,27 +107,17 @@ input[type='text']:focus {
   grid-auto-flow: row;
   grid-auto-rows: 40px;
 }
-.hide {
-  display: none;
-}
-
-.contact-item-details {
-  font-weight: bold;
-}
 
 .highlight-name {
   font-size: 30px;
 }
+
 .margin20 {
   margin: 20px;
 }
 
 contact-details div div {
   height: 40px;
-}
-
-.save {
-  background-color: green;
 }
 
 .selected {
@@ -133,7 +127,13 @@ contact-details div div {
 }
 
 .delete {
-  background-color: red;
+  background-color: lightcoral;
+}
+
+.delete,
+.save {
+  margin-top: 10px;
+  height: 50px;
 }
 
 form {

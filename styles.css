@@ -52,10 +52,13 @@ body {
   width: 136px;
   max-height: 80px;
 }
+
 .toolbar-element.search {
   width: 100px;
 }
-.add {
+
+.add,
+.save {
   background-color: darkseagreen;
 }
 
@@ -63,6 +66,7 @@ input[type='text']:focus {
   border-color: dodgerBlue;
   box-shadow: 0 0 8px 0 dodgerBlue;
 }
+
 .contact-list {
   grid-area: contact-list;
   /* display: grid;
@@ -75,32 +79,39 @@ input[type='text']:focus {
 /* contact details section */
 
 .content.contact-details {
-  grid-area: contact-details;
   background-color: #f2f2f2;
   border-radius: 5px;
   border: 2px solid;
-  /* display: grid;
+  display: grid;
+}
+
+.content.contact-details > div > div {
+  border-bottom: solid darkgray 1px;
+  margin-top: 10px;
+}
+
+.contact-item-form > div {
+  border-bottom: solid darkgray 1px;
+  margin-top: 10px;
+}
+
+.contact-item-form input {
+  min-width: 300px;
+  height: 20px;
+}
+
+.content-item {
+  display: grid;
   grid-template-columns: 1fr 2fr;
-  grid-template-rows: repeat(6, 50px);
-  grid-template-areas:
-    'input-name input-content'
-    'input-name input-content'
-    'input-name input-content'
-    'input-name input-content'
-    'input-name input-content'; */
-}
-
-.hide {
-  display: none;
-}
-
-.contact-item-details {
-  font-weight: bold;
+  grid-template-rows: 40px;
+  grid-auto-flow: row;
+  grid-auto-rows: 40px;
 }
 
 .highlight-name {
   font-size: 30px;
 }
+
 .margin20 {
   margin: 20px;
 }
@@ -109,28 +120,26 @@ contact-details div div {
   height: 40px;
 }
 
-.input-name {
-  grid-area: input-name;
-}
-
-.input-content {
-  grid-area: input-content;
-}
-
-.save {
-  background-color: green;
-}
-
 .selected {
   background-color: darkseagreen;
   font-weight: bold;
   border-radius: 5px;
 }
 
-.contact-item {
-  border-bottom: solid darkgray 1px;
+.delete {
+  background-color: lightcoral;
 }
 
-.delete {
-  background-color: red;
+.delete,
+.save {
+  margin-top: 10px;
+  height: 50px;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 40px;
+  grid-auto-flow: row;
+  grid-auto-rows: 40px;
 }

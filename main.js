@@ -1,11 +1,11 @@
 let contactList = sortArrayAscending(createMockData(33));
 
 $(document).ready(() => {
-  initialize();
-
   $('.btn.add').on('click', () => {
+    $('.contact-item').removeClass('selected');
     showAddContact();
   });
+
   $('.contact-details').on('submit', '#addContactForm', function(event) {
     insertNewContactItem($(this).serializeArray());
     contactList = sortArrayAscending(contactList);
@@ -31,12 +31,13 @@ $(document).ready(() => {
     insertContactItems(contactList);
     $('.contact-item:first').click();
   });
+
+  initialize();
 });
 
 function initialize() {
   insertContactItems(contactList);
-  showContactDetail(contactList[1]);
-  $('.contact-item:first').addClass('selected');
+  $('.contact-item:first').click();
   $('input.search').val('');
 }
 
@@ -78,77 +79,6 @@ function insertNewContactItem(newContact) {
   console.log(contactList);
 }
 
-function showContactDetail(contact) {
-  const template = `
-  <div class="margin20">
-  <div class="input-name" data > <span class="margin20">Name: </span> <span>${contact.name}</span>
-  <hr>
-  </div>
-<div class="input-name"> <span class="margin20">Surname: </span> <span>${contact.surname}</span>
-  <hr>
-</div>
-<div class="input-name"> <span class="margin20">Phone number:</span> <span>${contact.phoneNumber}</span>
-  <hr>
-</div>
-<div class="input-name"><span class="margin20"> Address street: </span> <span>${contact.street}</span>
-  <hr>
-</div>
-<div class="input-name"><span class="margin20"> City & zipcode: </span> <span>${contact.city}</span>
-  <hr>
-</div>
-<div class="input-name"><span class="margin20"> Email: </span> <span>${contact.email}</span>
-<hr>
-</div>
-<button class="btn delete toolbar-element">delete</button>
-</div>`;
-
-  $('.content.contact-details').html(template);
-}
-
-function showAddContact() {
-  const template = `  <form id="addContactForm" class="contact-item margin20" action="#">
-  <div class="input-name"> <span class="margin20">Name: </span>
-      <hr>
-  </div>
-  <div class="input-content"> <input required name="name" />
-      <hr>
-  </div>
-  <div class="input-name"> <span class="margin20">Surname: </span>
-      <hr>
-  </div>
-  <div class="input-content"> <input required name="surname" />
-      <hr>
-  </div>
-  <div class="input-name"> <span class="margin20">Phone number:</span>
-      <hr>
-  </div>
-  <div class="input-content"> <input required name="phoneNumber" />
-      <hr>
-  </div>
-  <div class="input-name"><span class="margin20"> Address street: </span>
-      <hr>
-  </div>
-  <div class="input-content"> <input required name="street" />
-      <hr>
-  </div>
-  <div class="input-name"><span class="margin20"> City & zipcode: </span>
-      <hr>
-  </div>
-  <div class="input-content"> <input required name="city" />
-      <hr>
-  </div>
-  <div class="input-name"><span class="margin20"> Email: </span>
-      <hr>
-  </div>
-  <div class="input-content"> <input required name="email">
-      <hr>
-  </div>
-  <button class="btn save toolbar-element" type="submit">save</button>
-</form>`;
-
-  $('.content.contact-details').html(template);
-}
-
 function findElement(contactList, contactId) {
   return contactList.find(contact => {
     return contact.id == contactId;
@@ -159,9 +89,10 @@ function filterElement(contactList, searchStr) {
   uppercasedSearch = searchStr.toUpperCase();
   return contactList.filter(element => {
     return (
-      element.name.toUpperCase().includes(uppercasedSearch) |
-      element.surname.toUpperCase().includes(uppercasedSearch) |
-      element.email.toUpperCase().includes(uppercasedSearch)
+      element.name
+        .toUpperCase()
+        .concat(' ', element.surname.toUpperCase())
+        .includes(uppercasedSearch) | element.email.toUpperCase().includes(uppercasedSearch)
     );
   });
 }

@@ -57,6 +57,14 @@ body {
   width: 100px;
 }
 
+form {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 40px;
+  grid-auto-flow: row;
+  grid-auto-rows: 40px;
+}
+
 .add,
 .save {
   background-color: darkseagreen;
@@ -134,12 +142,4 @@ contact-details div div {
 .save {
   margin-top: 10px;
   height: 50px;
-}
-
-form {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-template-rows: 40px;
-  grid-auto-flow: row;
-  grid-auto-rows: 40px;
 }
